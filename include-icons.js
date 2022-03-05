@@ -36,7 +36,7 @@ function replaceElement(elem, opts) {
     ObjParent.replaceChild(tmpObj,Obj);
   };
 };
-function SlimIconsInit(opts, attrs = {}) {
+function SlimIconsInit(opts) {
   /* Default Options */
   var defopts = {
     debug: false,
@@ -55,12 +55,13 @@ function SlimIconsInit(opts, attrs = {}) {
   /* Get elements to replace */
   const elementsToReplace = document.querySelectorAll('[data-slico]');
   /* Load Icons */
-  if (ico != false) {
-    Array.from(elementsToReplace).forEach(element => {
-      //console.log(element),
-      replaceElement(element, opts)
-    });
-	console.log("Done!");
+  Array.from(elementsToReplace).forEach(element => {
+    if (opts.debug == true) {
+      console.log(element)
+    }
+    replaceElement(element, opts)
+  });
+  if (opts.debug == true) {
+    console.log("Done!");
   };
-  var ico = false;
 };
